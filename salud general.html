@@ -1,0 +1,461 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuevo panorama</title>
+<style type="text/css">
+.contenedor
+{ width: 100%;
+  max-width: 1000px;
+  margin: 0 auto; 
+	 }
+	
+header      
+{ width: 100%;	
+  background:#737E8A;}
+	
+
+
+#btn-menu 
+{ display: none; }
+	
+header label 
+{ display: block;
+  width: 40px;
+  height: 40px;
+  padding: 5px; 
+  border-right: 1px solid #fff;}
+	
+header label:hover 
+{ cursor: pointer;
+  background:rgba(0,0,0,0.3); }
+	
+.menu 
+  { position: absolute; 
+	background:#737E8A;
+	width:99%;
+	margin-left:-110%;
+	transition: all 0.5s; }
+	
+ .menu ul
+{   margin: 0;
+	list-style: none;
+	padding: 0;
+    flex-direction: column;
+	text-align:center;}
+	
+ .menu li a
+  { font-family: 'Montserrat', sans-serif;
+	font-size: 13px;
+	display: block;
+	text-align: justify;
+	padding: 10px;
+	color:#FFFFFF;
+	text-decoration: none;
+	border-top: 1px solid #fff;}
+			
+ #btn-menu:checked ~ .menu
+  { margin: 0;}	
+	
+#titulo 
+{ 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  float:right;
+  padding: 15px;
+}
+	
+	
+#titulo_apartado {font-family: 'Noto Serif', serif;
+	              font-size: 45px; 
+	              color:#A89555;
+	              text-align: center;
+	              margin-top: 1em;
+	             }	
+	
+	
+#lead { margin-top: 2em;
+	   font-family: 'Raleway', sans-serif; 
+	    text-align: justify;
+	    font-size: 17px;
+	    line-height: 25px;
+	    margin-left: 10em;
+	    margin-right: 10em; 
+	    padding-bottom: 3em;}	
+	
+.parrafos { margin-top: 2em;
+           font-family:Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif";
+	       font-size: 17px;
+		   text-align: justify;
+	       line-height: 30px;
+	       margin-left: 10em;
+	       margin-right: 10em; }
+	
+	
+p.primera-letra::first-letter { font-size: 80px; 
+	                            font-family: 'Libre Baskerville', serif;
+	                            line-height: 0; }
+	
+	
+.pie_pagina { font-family:Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif";
+	          font-size: 12px;
+	          border-top:  solid 1px;
+	          line-height: 20px;
+	          margin-bottom: 3em;
+	        }	
+	
+	
+#fondo .contenedor { display: flex; justify-content: center; flex-wrap: wrap;}	
+.fondo {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  max-width: 190px;
+  width: 100%;
+  color: #bbb;
+  font-size: 16px;
+  box-shadow: none !important;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.fondo *,
+.fondo:before,
+.fondo:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.fondo:before,
+.fondo:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 50%;
+  content: '';
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: -1;
+  border: 2px solid #bbb;
+  border-color: transparent #bbb;
+}
+
+.fondo img {
+  max-width: 100%;
+  backface-visibility: hidden;
+  vertical-align: top;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.fondo figcaption {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 50%;
+}
+
+.fondo i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 4em;
+  z-index: 1;
+}
+
+.fondo a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.fondo:hover figcaption,
+.fondo.hover figcaption {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.fondo:hover:before,
+.fondo.hover:before,
+.fondo:hover:after,
+.fondo.hover:after {
+  border-width: 10px;
+}
+
+.fondo:hover:before,
+.fondo.hover:before {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.fondo:hover:after,
+.fondo.hover:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+	
+	
+#manuales .contenedor { display: flex; justify-content: center; flex-wrap: wrap;}
+#manuales article { margin: 15px;}	
+#manuales img { width: 100%; max-width: 280px;}	
+
+
+.c-slider { box-sizing: border-box;
+  display: flex;
+  min-height: 100vh;
+  
+}
+
+.contenedor-slider {
+  margin: auto;
+  width: 85%;
+  max-width: 900px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 10px #fff,
+ 0 15px 50px;
+	
+}
+
+.slider {
+  display: flex;
+  width: 700%;
+}
+
+.slider__section {
+  width: 100%;
+}
+
+.slider__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-prev, .btn-next {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50%;
+  font-family: monospace;
+  cursor: pointer;
+}
+
+.btn-prev:hover, .btn-next:hover {
+  background: white;
+}
+
+.btn-prev {
+  left: 10px;
+}
+
+.btn-next {
+  right: 10px;
+}	
+	
+
+@media (max-width:700px)
+{
+.menu { width:96%;}	
+.menu li a { padding:6px;}
+	
+#titulo_apartado {margin-left: 10px;
+	              }
+	
+#subtitulo {margin-left: 2em;
+	        margin-right: 2em;  
+	       }	
+	
+#lead {margin-left: 3em;
+	   margin-right: 3em;}	
+	
+.parrafos{margin-left: 3em;
+	       margin-right: 3em;}
+	
+
+	
+}	
+			
+</style>		
+</head>
+
+	
+	
+	
+	
+	
+<body>
+<header> 
+	
+	
+<div id="titulo"><a href="intro.html" style="color: white;	
+  text-decoration: none;">OLVIDADAS EN EL ENCIERRO</a>
+	</div>
+<input type="checkbox" id="btn-menu">
+ <label for="btn-menu"><img src="Imagenes/menu.png" style="margin-left: 4px; margin-top: 4px;"></label>	
+ <nav class="menu">
+	 <ul>
+		 <li><a href="salud general.html">NUEVO PANORAMA</a></li>
+	     <li><a href="Crisis de la salud mental .html">CRISIS DEL SERVICIO A LA SALUD MENTAL </a></li>
+		 <li><a href="Pedregal el servicio y sus fallas.html">PEDREGAL: EL SERVICIO Y SUS FALLAS</a></li>
+		 <li><a href="mujeres.html">“AQUÍ HAY SERES HUMANOS”</a></li> 
+	</ul>	   
+</nav>
+</header>
+
+
+<div class="contenedor">
+	
+
+<div id="titulo_apartado">
+NUEVO PANORAMA
+</div>	
+
+	
+<div id="lead">
+<i> Al Estado colombiano le costó cerca de cinco años consolidar un nuevo sistema de salud penitenciario que mejorara el servicio a la salud mental de las personas privadas de la libertad con enfermedades mentales. Para el mes de junio de 2018, el INPEC reportó tener en sus establecimiento 3.945 personas con trastornos mentales.</i>	
+</div>	
+
+<img src="Imagenes/salud general/portada (2).jpeg" width="100%" style="margin-bottom: 3em;">
+	
+	
+<div class="parrafos">
+<p class="primera-letra">Entre el 2014 y 2015, a partir de la liquidación de la EPS Caprecom por líos de corrupción y endeudamiento, el Estado planteó las nuevas bases del sistema de salud para la población privada de la libertad, reformando el servicio a la salud mental. Actualmente, tanto el sistema de salud general, como el de salud mental, funcionan por la intermediación de un Consorcio Fiduciario que se encarga de manejar los recursos económicos y de subcontratar IPS que brindan dichos servicios en los 135 establecimientos del país.</p>
+
+
+<iframe width="100%" height="520" frameborder="0" src="https://lauraximena2437.carto.com/builder/f542b5a4-943f-4fd4-b947-a4be7c03c995/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+<div class="pie_pagina">
+   Mapa de los 135 establecimientos carcelarios y/o penitenciarios del país discriminados por la cantidad de mujeres y hombres privados de la libertad que han sido diagnosticados con una enfermedad mental en el 2018. Fuente: INPEC.	
+</div>
+
+<p>La reestructuración del sistema de salud penitenciario inició en el 2011 con la creación de la Unidad de Servicios Penitenciarios y Carcelarios <a href="https://www.uspec.gov.co/" target="_blank" style="color:#00BDAA; text-decoration: none;" >(USPEC)</a>, que tiene como responsabilidad la salud, alimentación e infraestructura de la población carcelaria. Esta institución junto a los ministerios de Justicia, de Salud, de Hacienda, el Instituto Nacional Penitenciario y Carcelario <a href="http://www.inpec.gov.co/" target="_blank" style="color:#00BDAA; text-decoration: none;">(INPEC)</a>, y el Consorcio Fiduciario, conforman el Consejo del Fondo Nacional de Salud de la Población Privada de la Libertad, el cual según promulgó la <a href="http://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=56484" target="_blank" style="color: #00BDAA; text-decoration: none;">ley 1709 del 20 de enero de 2014</a> tiene como función principal “determinar la destinación de los recursos y el orden de prioridad conforme al cual serán atendidas las prestaciones en materia de salud frente a la disponibilidad financiera del Fondo, de tal manera que se garantice una distribución equitativa de los recursos”.</p>
+		
+<p>Las decisiones del consejo, el cual se reúne, por lo menos, una vez cada dos meses, son ejecutadas por el Consorcio Fiduciario que, actualmente, integran las Sociedades Fiduprevisora S.A. y Fiduagraria S.A. Estas deben manejar los recursos económicos del Fondo Nacional de Salud de la Población Privada de la Libertad (constituido por el Presupuesto General de la Nación) y contratar las IPS para brindar el servicio a la salud en cada establecimiento carcelario y/o penitenciario. En el 2018, el Estado otorgó $179 mil millones al Fondo con el fin de cubrir los gastos y garantizar el servicio a la salud de la población privada de la libertad.</p>
+</div>
+
+
+
+<section id="fondo">
+<div class="contenedor">
+<figure class="fondo">
+  <img src="Imagenes/salud general/presupuesto_fondo_2016_1.jpg" alt="sq-sample14" />
+  <figcaption><img src="Imagenes/salud general/presupuesto_fondo_2016_2.jpg"></figcaption>
+</figure>
+<figure class="fondo"><img src="Imagenes/salud general/presupuesto_fondo_2017_1.jpg" alt="sq-sample19" />
+  <figcaption><img src="Imagenes/salud general/presupuesto_fondo_2017_2.jpg"></figcaption>
+</figure>
+<figure class="fondo"><img src="Imagenes/salud general/presupuesto_fondo_2018_1.jpg" alt="sq-sample20" />
+  <figcaption><img src="Imagenes/salud general/presupuesto_fondo_2018_2.jpg"></figcaption>
+</figure>
+</div>		
+</section>	
+																									
+<div class="parrafos">
+<div class="pie_pagina">
+	Presupuestos otorgados al Fondo Nacional de Salud de la población privada de la libertad desde el 2016 al 2018. Fuente: INPEC.
+</div>																									
+																									
+																										
+																											
+															
+				
+<p>En el 2015, el Estado determinó que el consejo, las instituciones y el consorcio deberían tener como lineamiento el Modelo de Atención en Salud para la población privada de la libertad establecido en la <a href="https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/resolucion-5159-de-2015.pdf" target="_blank" style="color: #00BDAA; text-decoration: none;">resolución 5159</a>. Este modelo establece, a modo general, la prestación del servicio a la salud de la población privada de la libertad. La USPEC y el Ministerio de Salud desarrollaron el modelo, el cual dicta:</p>	
+
+<p><i>“cómo se organizan los establecimientos y recursos para la atención de la salud dirigidas a promover la salud y gestionar los riesgos en salud de dicha población, e incluye las funciones asistenciales y logísticas, como la puerta de entrada al sistema, su capacidad resolutiva, la responsabilidad de los diferentes actores involucrados con respecto a la atención de las Personas Privadas de la Libertad que demandan servicios, así como el proceso de referencia y contra referencia” (resolución 5159 DE 2015, pág 6).</i></p>
+		
+
+<p>Este modelo, implementado principalmente por la USPEC y el INPEC, intenta responder a las necesidades de salud de la población carcelaria. El modelo, por un lado, basa la prestación del servicio en cinco fases (promoción de la salud, la prevención, diagnóstico, tratamiento y la rehabilitación de la enfermedad) para definir una serie de conceptos necesarios para la aplicación; y por otro lado, emplea la salud pública con el fin de determinar las funciones de cada uno de los actores involucrados en el proceso de la prestación del servicio a la salud para la población privada de la libertad en el país.</p>	
+	
+<p>La implementación del modelo se da por medio de los Manuales Técnico Administrativos elaborados por la USPEC y el INPEC entre el 2015 y 2016. Son tres manuales: atención e intervención en salud pública, la prestación del servicio de salud de la población privada de la libertad, y el sistema obligatorio para la garantía de la calidad en salud penitenciaria.</p>	
+	
+<p>Estos manuales son utilizados como guía para brindar el servicio a la salud dentro de los establecimientos. En resumen, los manuales aclaran que sin importar el estado judicial del interno o interna, es decir, sea este; condenado (un juez determina el tiempo que debe cumplir la persona en un centro penitenciario por su delito) o sindicado (la persona está en un centro penitenciario a la espera de su proceso penal), se le debe brindar la atención primaria (las cinco fases del modelo) y la atención a urgencias por parte del Fondo Nacional de Salud.</p>	
+
+</div>
+
+<section id="manuales">
+<div class="contenedor">
+<article>
+<a href="https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/INEC/IGUB/uspec-manual-tecnico-administrativo-servicio-salud.pdf" target="_blank"><img src="Imagenes/salud general/Manual 1.jpeg"></a>
+</article>
+<article>
+<a href="https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/INEC/IGUB/uspec-manual-tecnico-atencion-salud-publica.pdf" target="_blank"><img src="Imagenes/salud general/Manual 2.jpeg"></a>
+</article>
+<article>
+<a href="https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/INEC/IGUB/uspec-manual-tecnico-administrativo-sogc.pdf" target="_blank"><img src="Imagenes/salud general/Manual 3.jpeg"></a>		
+</article>	
+</div>		
+</section>
+
+<div class="parrafos">
+<div class="pie_pagina">
+	Link de cada uno de los Manuales Técnico Administrativos. Fuente: INPEC.
+</div>
+
+	
+<p>Como tal, estas dos atenciones están esquematizadas en los servicios de salud intramural y extramural. El intramural son los servicios dentro de los establecimientos carcelarios y/o penitenciarios que brindan las IPS contratadas por el Consorcio Fiduciario. Estas IPS trabajan en la unidad de atención primaria y de atención inicial de urgencias en salud y el área de sanidad. Los servicios que deben brindar, según el modelo y los manuales, son medicina general, psicología, optometría, enfermería, nutrición, odontología, atención al consumidor de sustancias psicoactivas, y si el establecimiento cuenta con menores de 3 años y mujeres gestantes debe contar con pediatría, terapia de lenguaje y ginecobstetricia.</p>
+	
+<p>Los servicios extramurales son de dos tipos: el primero son las visitas programadas de especialistas que van cada cierto tiempo a los establecimientos, por ejemplo, un psiquiatra. El segundo son los que se brindan fuera de los establecimientos carcelarios como servicios especiales o de urgencias, ya que estos no se pueden atender dentro de la institución carcelaria por limitación de recursos físicos y/o humanos. En este último caso el INPEC es el encargado de trasladar a los internos fuera del establecimiento y custodiarlos durante el procedimiento, para una vez concluidos se garantice su retorno a la institución penitenciaria</p>	
+</div>	
+</div>
+
+
+<div class="c-slider">
+<div id="contenedor-slider" class="contenedor-slider">
+ <div id="slider" class="slider">
+    <section class="slider__section"><img src="Imagenes/salud general/1.jpg" class="slider__img"></section>
+    <section class="slider__section"><img src="Imagenes/salud general/2.uspec.jpg" class="slider__img"></section>
+    <section class="slider__section"><img src="Imagenes/salud general/3.inpec.jpg" class="slider__img"></section>
+    <section class="slider__section"><img src="Imagenes/salud general/4.Salud.jpg" class="slider__img"></section>
+    <section class="slider__section"><img src="Imagenes/salud general/5.justicia.jpg" class="slider__img"></section>
+    <section class="slider__section"><img src="Imagenes/salud general/6.consorcio.jpg" class="slider__img"></section>
+	<section class="slider__section"><img src="Imagenes/salud general/7.IPS.jpg" class="slider__img"></section> 
+  </div>
+  <div id="btn-prev" class="btn-prev">&#60;</div>
+  <div id="btn-next" class="btn-next">&#62;</div>
+ </div>
+</div>
+
+
+<div class="parrafos">
+<div class="pie_pagina" style="margin-bottom: 5em;">
+	Función principal de cada una de las instituciones responsables del sistema de salud y el servicio a la salud mental de la población privada de la libertad. Fuentes: Decreto 4150 del 3 de noviembre de 2011, Ley 1709 del 20 de enero 2014, Decreto 2245 del 24 de noviembre de 2015 y Resolución 5159 del 30 de noviembre de 2015.
+</div>
+</div>
+<script src="slider.js"></script>	
+</body>
+</html>
+
+
+
+
+
+
